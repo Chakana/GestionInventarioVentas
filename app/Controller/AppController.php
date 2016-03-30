@@ -58,8 +58,12 @@ class AppController extends Controller {
 	public function beforeFilter() {
 
 		$this->Auth->allow('display');
-		$this->layout = 'bootstrap';
-
+        if(AuthComponent::user('id')){ 
+		  $this->layout = 'plantilla';
+        }else{
+            $this->layout = 'bootstrap';
+        }
+         
 	//Configure AuthComponent
 		
 		

@@ -1,95 +1,128 @@
-<?php
-/**
- *
- *
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
-
-if (!Configure::read('debug')):
-	throw new NotFoundException();
-endif;
-
-App::uses('Debugger', 'Utility');
-?>
-<br/>
-<br/>
-<br/>
-<div class="row">
-	<!--<div class="alert alert-danger" role="alert">
-		Existen deudas a cobrar que han vencido, ingresar <a href="#" class="alert-link">aca</a> para mayor informacion.
-
-	</div>-->
-	<div class="col-md-1"></div>
-	<div class="col-md-4">
-		<div class="panel panel-default" id="contadoresVenta">
-			
-		</div>
-	</div>
-	<div class="col-md-6"> 
-		<div id="panel-accesosdirectos" class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Accesos Directos</h3>
-			</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Productos<br />'.$this->Html->tag('i','',array('class'=>'fa fa-cubes fa-2x')), array('controller' => 'productos'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>				
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Ventas<br />'.$this->Html->tag('i','',array('class'=>'fa fa-shopping-cart fa-2x')), array('controller' => 'ventas'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Clientes<br />'.$this->Html->tag('i','',array('class'=>'fa fa-users fa-2x')), array('controller' => 'clientes'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-					
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Nueva Venta<br />'.$this->Html->tag('i','',array('class'=>'fa fa-plus-circle fa-2x')), array('controller' => 'ventas', 'action'=>'add'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Nuevo Cliente<br />'.$this->Html->tag('i','',array('class'=>'fa fa-plus-square fa-2x')), array('controller' => 'clientes', 'action' => 'add'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Venta Tienda<br />'.$this->Html->tag('i','',array('class'=>'fa fa-plus fa-2x')), array('controller' => 'ventas','action'=>'ventaRapida'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-					
-					
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Deudas<br />'.$this->Html->tag('i','',array('class'=>'fa fa-money fa-2x')), array('controller' => 'ventas','action'=>'deudasCliente'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Movimientos<br />'.$this->Html->tag('i','',array('class'=>'fa fa-money fa-2x')), array('controller' => ' Movimientoproductos'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Inventario<br />'.$this->Html->tag('i','',array('class'=>'fa fa-money fa-2x')), array('controller' => ' Inventarioproductos'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Usuarios<br />'.$this->Html->tag('i','',array('class'=>'fa fa-users fa-2x')), array('controller' => 'users'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
-					</div>
-					<div class="col-md-4">
-						
-					</div>
-					<div class="col-md-4">
-						<?php echo $this->Html->link('Parametros Sistema<br />'.$this->Html->tag('i','',array('class'=>'fa fa-cubes fa-2x')), array('controller' => 'parametros'),array('class'=> 'btn btn-primary col-md-12','role' => 'button', 'escape'=>false)); ?>
+<div id="page-wrapper">
+	<div class="graphs">
+		<div class="col_3">
+			<div class="col-md-3 widget widget1">
+				<div class="r3_counter_box">
+					<i class="fa fa-mail-forward"></i>
+					<div class="stats">
+					  <h5>45 <span>%</span></h5>
+					  <div class="grow">
+						<p>Growth</p>
+					  </div>
 					</div>
 				</div>
 			</div>
+			<div class="col-md-3 widget widget1">
+				<div class="r3_counter_box">
+					<i class="fa fa-users"></i>
+					<div class="stats">
+					  <h5>50 <span>%</span></h5>
+					  <div class="grow grow1">
+						<p>New Users</p>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 widget widget1">
+				<div class="r3_counter_box">
+					<i class="fa fa-eye"></i>
+					<div class="stats">
+					  <h5>70 <span>%</span></h5>
+					  <div class="grow grow3">
+						<p>Visitors</p>
+					  </div>
+					</div>
+				</div>
+			 </div>
+			 <div class="col-md-3 widget">
+				<div class="r3_counter_box">
+					<i class="fa fa-usd"></i>
+					<div class="stats">
+					  <h5>70 <span>%</span></h5>
+					  <div class="grow grow2">
+						<p>Profit</p>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
 		</div>
-
 	</div>
-
-
-
 </div>
 
-<script>
-	$('#contadoresVenta').load('/Angels/ventas/contadoresventa/');
+<div class="switches">
+	<div class="col-12">
+		<div class="col-md-3 switch-right">
+			<div class="switch-right-grid">
+				<div class="switch-right-grid1">
+					<h3>TODAY'S STATS</h3>
+					<p>Duis aute irure dolor in reprehenderit.</p>
+					<ul>
+						<li>Earning: $400 USD</li>
+						<li>Items Sold: 20 Items</li>
+						<li>Last Hour Sales: $34 USD</li>
+					</ul>
+				</div>
+			</div>
+			<div class="sparkline">
+				<canvas id="ventas_mes" ></canvas>
+               
+			</div>
+		</div>
+		<div class="col-md-3 switch-right">
+			<div class="switch-right-grid">
+				<div class="switch-right-grid1">
+					<h3>TODAY'S STATS</h3>
+					<p>Duis aute irure dolor in reprehenderit.</p>
+					<ul>
+						<li>Earning: $400 USD</li>
+						<li>Items Sold: 20 Items</li>
+						<li>Last Hour Sales: $34 USD</li>
+					</ul>
+				</div>
+			</div>
+			<div class="sparkline">
+				<canvas id="ventas_mes" ></canvas>
+               
+			</div>
+		</div>
+		<div class="col-md-3 switch-right">
+			<div class="switch-right-grid">
+				<div class="switch-right-grid1">
+					<h3>TODAY'S STATS</h3>
+					<p>Duis aute irure dolor in reprehenderit.</p>
+					<ul>
+						<li>Earning: $400 USD</li>
+						<li>Items Sold: 20 Items</li>
+						<li>Last Hour Sales: $34 USD</li>
+					</ul>
+				</div>
+			</div>
+			<div class="sparkline">
+				<canvas id="ventas_mes" ></canvas>
+               
+			</div>
+		</div>
+	</div>
+</div>
 
-</script>
+	<script type="text/javascript">
+		var lineChartData = {
+			labels : ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ags","Sep","Oct","Nom","Dic"],
+			datasets : [
+				{
+					fillColor : "#fff",
+					strokeColor : "#F44336",
+					pointColor : "#fbfbfb",
+					pointStrokeColor : "#F44336",
+					pointHighlightFill: "#fff",
+			        pointHighlightStroke: "rgba(220,220,220,1)",
+
+					data : [20,35,45,30,10,65,70]
+				}
+			]
+			
+		};
+		new Chart(document.getElementById("ventas_mes").getContext("2d")).Line(lineChartData);
+		
+	</script>

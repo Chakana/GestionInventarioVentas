@@ -7,7 +7,7 @@
 <div class="ventas index">
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-10">
 			<div class="page-header">
 				<h1><?php echo __('Ventas'); ?></h1>
 			</div>
@@ -17,39 +17,35 @@
 
 	?>
 
-
-	<div class="row">
-                                                                         
-		
-
-	<div class="col-md-12">
+<div class="row">
+	<div class="col-md-10">
 		 <div class="form-group">
   				<label for="usr"><h4>Nueva Venta</h4></label>
  					<nav class="navbar navbar-default" role="navigation">
 
-<div class="row">
-  <div class="col-md-12">
-  	 <div class="navbar-header">
-		    <form class="navbar-form navbar-left" role="Producto">
-		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Producto">
-		        
-    				<button type="submit" class="btn btn-default">Busqueda</button>
- 					</div>
- 					</form>
-        </div>
-                <div class="col-md-3 col-md-offset-3">
-   					 <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#Finalizar">
-		 			 <i class="fa fa-shopping-cart fa-3x"></i></br>Registrar Compra
-					 </button>
-  				</div>
-</div>
+				<div class="row">
+					 <div class="col-md-11">
+					  	 <div class="navbar-header">
+							    <form class="navbar-form navbar-left" role="Producto">
+							        <div class="form-group">
+							          	<input type="text" class="form-control" placeholder="Producto">
+				    					<button type="submit" class="btn btn-default">Busqueda</button>
+					 				</div>
+					 			</form>
+					     </div>
+		                <div class="col-md-3 col-md-offset-3">
+		   					 <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#Finalizar">
+				 			 <i class="fa fa-shopping-cart fa-3x"></i></br>Registrar Compra
+							 </button>
+		  				</div>
+					</div>
 
  				
 		 </div>
-		</div>
+	</div>
 
-		
+
+
 
 <div class=" tarjetas">
 <div class="form-group">
