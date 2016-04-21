@@ -21,10 +21,13 @@ class VentasController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->layout = 'bootstrap';
 		$this->Venta->recursive = 1;
 		$options = array('limit'=>5);
 		$this->Paginator->settings = $options;
+		$productos=$this->Producto->find('all');
 		$this->set('ventas', $this->Paginator->paginate());
+		$this->set('productos',$productos);
 	}
 
 	public function deudasCliente($idCliente=null){
@@ -222,7 +225,45 @@ public function addProforma(){
 
 	}
 
+	public function graficasVenta(){
+		$this->layout=null;
+	    $this->Venta->recursive = -1;
+	    $data=$this->Venta->query('SELECT MONTH(fechaVenta) as mes ,COUNT(id) as venta FROM ventas WHERE YEAR(fechaVenta) = 2014 GROUP BY MONTH(fechaVenta)');
+		$data = call_user_func_array('array_merge', $data);
+		$data=json_encode($data);
+	    $this->set('venta',$data);
+
+
+	    $data=$this->Venta->query("SELECT MONTH(fechaVenta) as mes ,COUNT(id) as deuda FROM ventas WHERE YEAR(fechaVenta) = 2014 AND estado ='PENDIENTE' GROUP BY MONTH(fechaVenta)");
+	    $data = call_user_func_array('array_merge', $data);
+		$data=json_encode($data);
+	    $this->set('deuda',$data);
+
+        $data=$this->Pago->query('SELECT MONTH(fechaPago) as mes ,COUNT(id) as pagos FROM pagos WHERE YEAR(fechaPago) = 2014  GROUP BY MONTH(fechaPago)');
+	    $data = call_user_func_array('array_merge', $data);
+		$data=json_encode($data);
+	    $this->set('pagos',$data);
+
+	}
+
+	public function busquedaProducto($cadenaBusqueda=null){	
+		$this->layout=null;
+		$productos = array();
+		if ($cadenaBusqueda!='') {
+			$this->Venta->recursive = 0;
+	        $productos=$this->Producto->query("SELECT * FROM productos WHERE codigo like '%".$cadenaBusqueda."%' OR nombreProducto like '%".$cadenaBusqueda."%' OR descripcionProducto like '%".$cadenaBusqueda."%'" );
+	        //$productos = call_user_func_array('array_merge', $productos);
+	        //var_dump($data);
+		}else{
+			$productos=$this->Producto->query("SELECT * FROM productos" );
+		}
+			
+
+		$this->set('productos',$productos);
+	}
+		
 	public function ventaRapida($cadenaBusqueda=null,$idVenta=null){	
+
 		//$this->layout=null;
 		
 		if ($cadenaBusqueda!=null) {
@@ -303,4 +344,5 @@ public function addProforma(){
 		}
 
 	}
+	
 }

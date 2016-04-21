@@ -59,6 +59,10 @@
 				</div>
 				
 				<div class="form-group">
+					<?php echo $this->Form->input('imagen', array('class' => 'form-control', 'placeholder' => 'url','default'=>'0'));?>
+				</div>
+
+				<div class="form-group">
 					<?php echo $this->Form->submit(__('Grabar'), array('class' => 'btn btn-success')); ?>
 				</div>
 

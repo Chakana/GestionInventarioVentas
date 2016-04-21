@@ -64,6 +64,10 @@
 					<?php echo $this->Form->input('existencia', array('class' => 'form-control', 'placeholder' => 'Existencia Inicial','default'=>$existencia));?>
 				</div>
 				<div class="form-group">
+					<?php echo $this->Form->input('imagen', array('class' => 'form-control', 'url' => 'Existencia Inicial','default'=>$existencia));?>
+				</div>
+
+				<div class="form-group">
 					<?php echo $this->Form->submit(__('Grabar'), array('class' => 'btn btn-success')); ?>
 				</div>
 
@@ -72,3 +76,4 @@
 		</div><!-- end col md 12 -->
 	</div><!-- end row -->
 </div>
+

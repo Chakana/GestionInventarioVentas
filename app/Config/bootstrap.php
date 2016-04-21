@@ -107,3 +107,4 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 CakePlugin::loadAll();
+

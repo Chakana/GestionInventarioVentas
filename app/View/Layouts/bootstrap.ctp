@@ -63,6 +63,7 @@
   div.tarjetacompra {
         border: 1px solid;
         background-color: White;
+        height: 257px ;
         /*margin-right: -5px;
     margin-left: -6px;
     margin-top: 16px;

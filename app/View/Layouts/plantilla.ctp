@@ -31,6 +31,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         echo $this->Html->script('plugins/canvas-to-blob.min');
         echo $this->Html->script('jquery.flot.min');
 
+         echo $this->Html->script('morris.js');
+         echo $this->Html->script('raphael-min.js');
+         echo $this->Html->css('morris.css');
+
+
         echo $this->Html->css('select2');
         echo $this->Html->css('animate');
         echo $this->Html->css('style');
@@ -45,6 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         echo $this->fetch('css');
         echo $this->fetch('script');
 
+ 
       
     ?>
 
@@ -53,7 +59,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 <!--//end-animate-->
 <!----webfonts--->
-<link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <!---//webfonts---> 
  <!-- Meters graphs -->
 <!-- Placed js at the end of the document so the pages load faster -->
@@ -68,7 +73,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!--logo and iconic logo start-->
 			<div class="logo">
 			
-				<h1><a href="index.html"><span>PANADERIA</span></a></h1>
+				<h1><a href="index.html"><span>INVENTARIOS</span></a></h1>
 			</div>
 			<div class="logo-icon text-center">
 				<a href="index.html"><i class="lnr lnr-home"></i> </a>
@@ -201,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li class="dropdown profile_details_drop">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<div class="profile_img">	
-										<span style="background:url(../img/1.jpg) no-repeat center"> </span> 
+										<!--<span style="background:url(../img/1.jpg) no-repeat center"> </span>--> 
 										 <div class="user-name">
 											<p>Nombre<span>Administrator</span></p>
 										 </div>
@@ -229,7 +234,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
         <!--footer section start-->
 			<footer>
-			   <p>P A N A D E R I A</p>
+			   <!--<p>P A N A D E R I A</p>-->
 			</footer>
         <!--footer section end-->
 

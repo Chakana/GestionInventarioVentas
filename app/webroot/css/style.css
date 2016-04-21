@@ -1947,7 +1947,7 @@ i.pull-left.fa.fa-bolt.icon-rounded {
 	padding:2em 0 1em;
 }
 canvas#line{
-    background-color:#fff !important;
+    background-color:#000 !important;
 	-ms-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.2);
     -o-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.2);
@@ -2005,7 +2005,7 @@ canvas.overlay {
 .grow p{
     color: #fff;
     margin: 0;
-    font-size: 11px;
+    font-size: 9px;
     text-transform: uppercase;
 }
 .spar-10 {
@@ -2587,16 +2587,16 @@ h4.asd label {
     line-height: 105px;
     font-size: 3.5em;
 }
-.r3_counter_box .fa-mail-forward{
+.r3_counter_box .fa-money{
 	color:#8BC34A;
 }
-.r3_counter_box .fa-users {
+.r3_counter_box .fa-shopping-cart {
 	color:#00BCD4;
 }
 .r3_counter_box .fa-usd {
 	color:#FFCA28;
 }
-.r3_counter_box .fa-eye {
+.r3_counter_box .fa-exclamation-triangle{
 	color:#F44336;
 }
 .stats span{
@@ -2708,7 +2708,7 @@ i.dollar1{
 }
 /*-- graphs --*/
 canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar{
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(70,70,70);
 }
 .graph_box{
 	margin-bottom:1.5em;
