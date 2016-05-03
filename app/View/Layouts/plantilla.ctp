@@ -23,7 +23,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         echo $this->Html->script('jquery-ui-1.10.4');
         
         echo $this->Html->script('printElement');
-        echo $this->Html->script('select2');
+        //echo $this->Html->script('select2');
+        echo $this->Html->script('bootstrap-select.min');
         echo $this->Html->script('bootbox.min');
         echo $this->Html->script('fileinput.min');
         echo $this->Html->script('fileinput_locale_es');
@@ -34,9 +35,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
          echo $this->Html->script('morris.js');
          echo $this->Html->script('raphael-min.js');
          echo $this->Html->css('morris.css');
+        // echo $this->Html->css('select2-bootstrap');
 
-
-        echo $this->Html->css('select2');
+        //echo $this->Html->css('select2');
+         echo $this->Html->css('bootstrap-select.min');
         echo $this->Html->css('animate');
         echo $this->Html->css('style');
         echo $this->Html->css('icon-font.min');
@@ -53,7 +55,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
       
     ?>
-
+    <script>
+		Storage.prototype.setObj = function(key, obj) {
+		    return this.setItem(key, JSON.stringify(obj))
+		}
+		Storage.prototype.getObj = function(key) {
+		    return JSON.parse(this.getItem(key))
+		}
+    </script>
 	<script>
 		 new WOW().init();
 	</script>

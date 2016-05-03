@@ -12,7 +12,7 @@
 					</TD>
 					<TD>
 						<div class="form-group">
-							<?php echo $this->Form->input('producto_id', array('class' => 'form-control', 'placeholder' => 'Producto Id'));?>
+							<?php echo $this->Form->input('producto_id', array('class' => 'selectpicker form-control', 'placeholder' => 'Producto Id', 'data-live-search' => 'true'));?>
 						</div>				
 					</TD>
 					<TD>
@@ -61,5 +61,10 @@ $('#VentadetallePrecioUnitario').focusout(function() {
   var precioUnitario=$('#VentadetallePrecioUnitario').val();  
   $('#VentadetallePrecioTotal').val(cantidad*precioUnitario);
 });
-$("#VentadetalleProductoId").select2();
+$('.selectpicker').selectpicker({
+  style: 'btn-info',
+  size: 4
+});
+
+//$("#VentadetalleProductoId").select2();
 </script>

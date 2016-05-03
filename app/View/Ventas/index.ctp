@@ -17,6 +17,7 @@
    			 if(keycode == '13'){ 
    			 	var textoBusqueda = $('#textoBusqueda').val();
 			    $('#productosBusqueda').load('http://localhost/GestionInventarioVentas/Ventas/busquedaProducto/'+textoBusqueda);
+					
 
    			 }
         });
@@ -27,8 +28,9 @@
 
 	    $(".botonAgregar").click(function(){
 	    	var idBoton = $(this).attr('x-id');
-			carritoCompra.push(idBoton);
+			
 
+			carritoCompra.push(idBoton);
 			console.log(carritoCompra);
 	    });
 
@@ -59,8 +61,35 @@
 
 	    });
 
+	    $("#mandarCompra").click(function(){
+	    	for (var i = carritoCompra.length - 1; i >= 0; i--) {
+	    		 $.ajax({
+				        url: '/GestionInventarioVentas/ventas/compraProducto/'+ carritoCompra[i],
+				        dataType: 'json',
+				        type: 'GET',
+				        // This is query string i.e. country_id=123
+				        data: {},
+				        success: function(data) {
+				        	console.log(data);
+				        	
+				           if(data=='false'){
+				           	//existe producto
+				           	console.log(data);
+				           		//bootbox.alert('No se pudo comprar');
+				           }
+				        },
+				        error: function(jqXHR, textStatus, errorThrown) {
+				            alert(errorThrown);
+				        }
+				    });
+	    		
+	    	};
+			$('#Finalizar').modal('hide')
 
+	    });
 
+	  
+	   
 
 
 
@@ -174,7 +203,7 @@
 
 </br>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Comprar</button>
+        <button type="button" id="mandarCompra" class="btn btn-primary">Comprar</button>
         <button type="button" id="cancelarCarrito" class="btn btn-default" data-dismiss="modal">Cancelar</button>
      
       </div>

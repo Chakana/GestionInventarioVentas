@@ -25,8 +25,17 @@ class ProductosController extends AppController {
 		$options = array('conditions' => array('Producto.estado'=> 1));
 		$this->Paginator->settings = $options;
 		$this->set('productos', $this->Paginator->paginate());
-		
+		 $productosActivos = $this->Producto->find('list', array(
+        'fields' => array('Producto.nombreProducto', 'Producto.descripcionProducto'),
+        'conditions' => array('Producto.status'== 1),
+        'recursive' => 0
+    ));	
+		$this->set(compact('productosActivos')); 
+			var_dump($productosActivos);
 	}
+
+	
+
 
 	public function listadoProductos() {
 		$this->Producto->recursive = 2;
@@ -35,6 +44,16 @@ class ProductosController extends AppController {
 		$this->set('productos', $this->Paginator->paginate());
 		
 	}
+
+	public function json_listadoProductos() {
+		$this->autoRender = false;
+		$this->Producto->recursive = 2;
+		$options = array('conditions' => array('Producto.estado'=> 1),'order' => array('Producto.nombreProducto'=>'asc'));
+		$resultado = $this->Producto->find('list', array('conditions' => array('Producto.estado' => 1)));
+	 return json_encode($resultado); 
+		
+	}
+
 
 	public function listadoProductosInactivos(){
 		$this->Producto->recursive = 2;
@@ -59,6 +78,54 @@ class ProductosController extends AppController {
 		$inventarioProducto = $this->Inventarioproductos->find('all', array('conditions' => array('Inventarioproductos.producto_id' => $id)));		
 		$this->set('existencia',$inventarioProducto[0]['Inventarioproductos']['existencia']);
 	}
+
+
+//public function ingresarProducto($nombreProducto,$numeroCodigo,$numeroBarras,$existeciaProducto,$descripcionProducto,$introducirPresio,$precio1,$precio2,$precio3,$precio4,$seleccionImagen)
+public function ingresarProducto()
+{
+	$data = $this->request->input('json_decode');
+	$this->autoRender = false;
+	$resultado = true;
+	$nuevoProducto = array(
+		'nombreProducto'=> $data->nombreProducto,
+		'descripcionProducto'=> $data->descripcionProducto,
+		'categoria' => 0,
+		'precioCompra' => 0,
+		'precio1'=> $data->precio1,
+		'precio2'=> $data->precio2,
+		'precio3' => $data->precio3,
+		'precio4' => $data->precio4,
+		'estado'=> 0,
+		'codigo' => 0,
+		'imagen' => $data->seleccionImagen
+		);
+	$this->Producto->create();
+		if ($this->Producto->save($nuevoProducto)) {
+					$nuevoInventario = array(
+						'producto_id'=> $this->Producto->getLastInsertId(),
+						'fechaIngreso'=> date("Y-m-d H:i:s"),
+						'existencia' => 0,
+						'fechaModificacion' => date("Y-m-d H:i:s")
+						);
+					$this->Inventarioproductos->create();
+					$this->Inventarioproductos->save($nuevoInventario);
+					//registramos en movimientos 
+					$movimientoProducto = array(
+						'producto_id'=>$this->Producto->getLastInsertId(),
+						'tipoMovimiento'=>'IN',
+						'fechaMovimiento'=>date("Y-m-d H:i:s"),
+						'cantidad'=>0,
+						'user_id'=>AuthComponent::user('id')
+						);
+					$this->Movimientoproducto->create();
+					
+					$this->Movimientoproducto->save($movimientoProducto);
+		}
+		else{
+			$resultado = false;
+		}
+    return json_encode($resultado); 
+}
 
 /**
  * add method
@@ -133,6 +200,10 @@ class ProductosController extends AppController {
 					);
 				$this->Movimientoproducto->create();
 				$this->Movimientoproducto->save($movimientoProducto);
+
+				$tmp_name = $this->data['Producto'];
+				throw new Exception($tmp_name, 1);
+				
 
 				$this->Session->setFlash(__('Se ha grabado con exito.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));

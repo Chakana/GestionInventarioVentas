@@ -64,7 +64,7 @@
 					<?php echo $this->Form->input('existencia', array('class' => 'form-control', 'placeholder' => 'Existencia Inicial','default'=>$existencia));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('imagen', array('class' => 'form-control', 'url' => 'Existencia Inicial','default'=>$existencia));?>
+					<?php echo $this->Form->input('imagen',['type'=>'file'], array('class' => 'form-control', 'url' => 'Existencia Inicial','default'=>$existencia));?>
 				</div>
 
 				<div class="form-group">
