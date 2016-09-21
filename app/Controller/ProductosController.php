@@ -31,7 +31,6 @@ class ProductosController extends AppController {
         'recursive' => 0
     ));	
 		$this->set(compact('productosActivos')); 
-			var_dump($productosActivos);
 	}
 
 	
@@ -52,6 +51,17 @@ class ProductosController extends AppController {
 		$resultado = $this->Producto->find('list', array('conditions' => array('Producto.estado' => 1)));
 	 return json_encode($resultado); 
 		
+	}
+
+	public function json_listadoEdicionProductos(){
+		$this->autoRender = false;
+		 $productosActivos = $this->Producto->find('all', array(
+	        'fields' => array('Producto.id','Producto.nombreProducto', 'Producto.descripcionProducto'),
+	        'conditions' => array('Producto.status'== 1),
+	        'recursive' => 0
+	    ));	
+		 return json_encode($productosActivos); 
+
 	}
 
 

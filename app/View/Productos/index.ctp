@@ -1,5 +1,32 @@
 <script type="text/javascript">
 $(document).ready(function(){
+$('.selectpicker').selectpicker({
+  style: 'btn-info',
+  size: 4
+});
+
+	    $.ajax({
+                type: "GET",
+                url: '/GestionInventarioVentas/productos/json_listadoEdicionProductos',
+                dataType: 'json',
+                success: function(json) {
+
+                    var $elnombre = $("#modificarNombre");
+                    var $eldescripcion = $("#modificarDescripcion");
+                    $elnombre.empty(); // remove old options
+                    $.each(json, function(value, key) {
+                        console.log (key.Producto.nombreProducto);
+                        $elnombre.append($("<option></option>")
+                                .attr("value", key.Producto.id).text(key.Producto.nombreProducto));
+                        
+                    });														
+	                
+
+                    
+                    
+                }
+            });
+
  $("#nuevo_guardar").click(function(){
  		var nombreProducto=$('#nuevo_nombreProducto').val();
  		var numeroCodigo=$('#nuevo_numeroCodigo').val();
@@ -202,10 +229,14 @@ $(document).ready(function(){
    			<div class="form-group">
 	   			<div class="col-md-6">
 	   			 	
-	   			 	<label for="exampleInputEmail1">Nombre</label>
-	   			 	<input type="text" class="form-control" id="editar_nombre" placeholder="">
+	   			 	<label for="exampleInputEmail1">Nombre
+		   			 	<SELECT id="modificarNombre" NAME="Nombre" SIZE="1" class="selectpicker"> 
+						  
+						</SELECT> </label>
+
+					<br></br>
 	   			 	<label for="exampleInputEmail1">Descripcion</label>
-	   			 	<input type="text" class="form-control" id="editar_descripcionProducto" placeholder="">
+	   			 	<input type="text" class="form-control" id="editar_descripcion" placeholder="">   
 	  			    <label for="exampleInputEmail1">Codigo</label>
 	   			    <input type="number" class="form-control" id="editar_codigo" placeholder="">
 	   			    <label for="exampleInputEmail1">Codigo de Barras</label>
